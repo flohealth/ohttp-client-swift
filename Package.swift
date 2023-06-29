@@ -12,7 +12,7 @@ let package = Package(
         .library(name: "OHTTPSwift", targets: ["OHTTPSwift"]),
     ],
     dependencies: [
-        .package(url: "git@github.com:flohealth/bhttp-swift.git", from: "0.1.0")
+        .package(url: "https://github.com/flohealth/bhttp-swift.git", from: "0.1.0")
     ],
     targets: [
         .binaryTarget(
