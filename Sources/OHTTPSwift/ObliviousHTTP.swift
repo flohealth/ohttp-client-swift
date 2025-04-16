@@ -25,9 +25,13 @@ public var isEnabled: Bool {
     set { OHTTPRelayURLProtocol.isActive = newValue }
 }
 
-public func fetchOHTTPKeyConfig() {
+public func fetchOHTTPKeyConfig(invalidateCache: Bool = false) async -> Data? {
+    try? await config?.keyConfigClient().fetchKeyConfiguration(invalidateCache)
+}
+
+public func refreshOHTTPKeyConfig() {
     Task.detached {
-        _ = try? await config?.keyConfigClient().fetchKeyConfiguration(true)
+        _ = await fetchOHTTPKeyConfig(invalidateCache: true)
     }
 }
 
